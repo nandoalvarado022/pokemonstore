@@ -12,6 +12,7 @@ export class ListadoComponent implements OnInit {
     pokemonesFiltrados = [];
     filtrosAplicados = [];
     strFiltro = "all";
+    opcionesFiltro = ["Todos", "thunder-punch", "fire-punch", "mega-punch", "sand-attack"];
     
     constructor(private pokemonService: PokemonService) { }
 
@@ -44,7 +45,7 @@ export class ListadoComponent implements OnInit {
 
     filtrarPokemones(strFiltro){
         this.strFiltro = strFiltro; 
-        if(strFiltro == 'all') this.pokemonesFiltrados = this.pokemones;
+        if(strFiltro == 'Todos') this.pokemonesFiltrados = this.pokemones;
         else this.pokemonesFiltrados = [...this.pokemones.filter(pokemon => pokemon.moves.some(move => move.move.name && move.move.name.indexOf(strFiltro) >= 0))];
     }
 }

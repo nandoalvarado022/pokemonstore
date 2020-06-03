@@ -3,10 +3,8 @@
         <div class="col-md-12" id="divFiltros">
             Filtrar Pokémones
             <div class="content movimientos">
-                <button (click)="filtrarPokemones('all')" type="button" class="{{ strFiltro == 'all' ? 'active' : 'all' }} btn-sm btn btn-outline-secondary">Todos</button>
-                <button (click)="filtrarPokemones('fire-punch')" type="button" class="{{ strFiltro == 'fire-punch' ? 'active' : '' }} btn-sm btn btn-outline-secondary">fire-punch</button>
-                <button (click)="filtrarPokemones('mega-punch')" type="button" class="{{ strFiltro == 'mega-punch' ? 'active' : '' }} btn-sm btn btn-outline-secondary">mega-punch</button>
-                <button (click)="filtrarPokemones('sand-attack')" type="button" class="{{ strFiltro == 'sand-attack' ? 'active' : '' }} btn-sm btn btn-outline-secondary">sand-attack</button>
+
+                <button *ngFor="let filtro of opcionesFiltro" (click)="filtrarPokemones(filtro)" type="button" class="{{ strFiltro == filtro ? 'active' : 'all' }} btn-sm btn btn-outline-secondary">{{filtro}}</button>
             </div>
         </div>
 
