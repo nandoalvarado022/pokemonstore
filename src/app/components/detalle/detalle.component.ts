@@ -19,7 +19,7 @@ export class DetalleComponent implements OnInit {
     verDetalle(data) {
         this.pokemonService.getDetalle(data.id).subscribe(
             (data: any) => {
-                this.detallePokemon = data
+                this.detallePokemon = data;
                 // consultando pokemones relacionados
                 fetch(data.types[0].type.url).then(
                     data => data.json()
