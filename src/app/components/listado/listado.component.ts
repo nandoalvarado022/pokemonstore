@@ -9,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListadoComponent implements OnInit {
     pokemones = [];
-    pokemonesFiltrados;
+    pokemonesFiltrados = [];
+    filtrosAplicados = [];
+    strFiltro = "all";
     
     constructor(private pokemonService: PokemonService) { }
 
@@ -20,8 +22,8 @@ export class ListadoComponent implements OnInit {
                 pokemones.map(pokemon => {
                     this.pokemonService.getDetalle(pokemon.name).subscribe(
                         (pokemon: any) => {
-                            debugger
                             this.pokemones.push(pokemon);
+                            this.pokemonesFiltrados.push(pokemon);
                         }
                     )
                 })
@@ -38,11 +40,11 @@ export class ListadoComponent implements OnInit {
     saveDeseadosPokemon(pokemon){
         this.pokemonService.saveDeseadosPokemon(pokemon);
         alert('El pokemon se ha agregado a tu lista de deseados')
-    }    
-
-    filtrarPokemones(){
-        // this.pokemonesFiltrados = this.pokemones.filter;
     }
 
-    
+    filtrarPokemones(strFiltro){
+        this.strFiltro = strFiltro; 
+        if(strFiltro == 'all') this.pokemonesFiltrados = this.pokemones;
+        else this.pokemonesFiltrados = [...this.pokemones.filter(pokemon => pokemon.moves.some(move => move.move.name && move.move.name.indexOf(strFiltro) >= 0))];
+    }
 }
