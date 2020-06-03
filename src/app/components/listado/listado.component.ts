@@ -12,7 +12,7 @@ export class ListadoComponent implements OnInit {
     pokemonesFiltrados = [];
     filtrosAplicados = [];
     strFiltro = "all";
-    opcionesFiltro = ["Todos", "thunder-punch", "fire-punch", "mega-punch", "sand-attack"];
+    opcionesFiltro = ["Todos", "thunder-punch", "fire-punch", "mega-punch", "sand-attack", "tackle", "headbutt", "take-down"];
     
     constructor(private pokemonService: PokemonService) { }
 
