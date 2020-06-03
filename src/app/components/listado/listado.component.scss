@@ -1,0 +1,21 @@
+li{
+    list-style: none;
+}
+.row{
+    > div{
+        margin: 10px auto;
+    }
+    .card{
+        .title{
+            text-transform: capitalize;
+        }
+        img{
+            width: 150px;
+            object-fit: contain;
+        }
+        .bi-heart-fill{
+            float: right;
+            font-size: 20px;
+        }
+    }
+}

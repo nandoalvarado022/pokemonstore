@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <div *ngFor="let row of pokemones" class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <a class="title" href="{{row.url}}">{{row.name}}</a>
+                </div>
+                <div class="card-body">
+                    <div class="flex">
+                        <img src="assets//images/pokemones/{{row.name}}.png" />
+                        <div>Qui tempor labore esse incididunt quis amet nisi irure exercitation non veniam est incididunt. Magna id id incididunt ad. Proident sit velit ea mollit Lorem reprehenderit nostrud.</div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="button" class="btn-sm btn btn-success" (click)="saveCarritoPokemon(row.name)">Añadir al carrito</button>
+                    &nbsp;&nbsp;
+                    
+                    <button [routerLink]="['/detalle', row.name]" type="button" class="btn-sm btn btn-outline-success">Ver detalle</button>
+                    <svg (click)="saveDeseadosPokemon(row.name)" class="bi bi-heart-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
