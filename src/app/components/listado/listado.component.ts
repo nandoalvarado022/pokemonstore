@@ -9,14 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListadoComponent implements OnInit {
     pokemones = [];
+    pokemonesFiltrados;
     
     constructor(private pokemonService: PokemonService) { }
 
     ngOnInit() {
         this.pokemonService.getPokemones().subscribe(
             (data: any) => {
-                this.pokemones = data.pokemon_species;
-                console.log(this.pokemones)
+                const pokemones = data.pokemon_species;
+                pokemones.map(pokemon => {
+                    this.pokemonService.getDetalle(pokemon.name).subscribe(
+                        (pokemon: any) => {
+                            debugger
+                            this.pokemones.push(pokemon);
+                        }
+                    )
+                })
             },
             err => console.log(err)
         )
@@ -31,6 +39,10 @@ export class ListadoComponent implements OnInit {
         this.pokemonService.saveDeseadosPokemon(pokemon);
         alert('El pokemon se ha agregado a tu lista de deseados')
     }    
+
+    filtrarPokemones(){
+        // this.pokemonesFiltrados = this.pokemones.filter;
+    }
 
     
 }

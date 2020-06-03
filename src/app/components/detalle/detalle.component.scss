@@ -1,17 +1,19 @@
-h1{
+#page_detalle{
     margin-top: 20px;
-    text-transform: uppercase;
-}
-.image_principal{
-    width: 300px;
-}
-.movimientos{
-    .content{
-        overflow-y: scroll;
-        height: 100px;
+    h1{
+        text-transform: uppercase;
     }
-}
+    .image_principal{
+        width: 300px;
+    }
+    .movimientos{
+        .content{
+            overflow-y: scroll;
+            height: 100px;
+        }
+    }
 
-.acciones{
-    margin-top: 20px;
+    .acciones{
+        margin-top: 20px;
+    }
 }

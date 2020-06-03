@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" id="page_detalle">
     <div class="row">
         <div class="col-md-4">
             <img class="image_principal" src="assets/images/pokemones/{{detallePokemon.name}}.png" />
@@ -21,6 +21,12 @@
                         <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
                     </svg>
                 </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h2>Relacionados</h2>
+            <div *ngFor="let pokemon of detallePokemon.relacionados">
+                <a (click)="iraRelacionados(pokemon.pokemon.name)">{{ pokemon.pokemon.name }}</a>
             </div>
         </div>
     </div>

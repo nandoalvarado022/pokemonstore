@@ -20,7 +20,13 @@ export class DetalleComponent implements OnInit {
         this.pokemonService.getDetalle(data.id).subscribe(
             (data: any) => {
                 this.detallePokemon = data
-                console.log(data);
+                // consultando pokemones relacionados
+                fetch(data.types[0].type.url).then(
+                    data => data.json()
+                ).then(datos => {
+                    const relacionados = datos.pokemon.slice(0, 10);
+                    this.detallePokemon.relacionados = relacionados;
+                })
             }
         )
     }
@@ -33,5 +39,10 @@ export class DetalleComponent implements OnInit {
     saveDeseadosPokemon(pokemon){
         this.pokemonService.saveDeseadosPokemon(pokemon);
         alert('El pokemon se ha agregado a tu lista de deseados')
+    }
+
+    iraRelacionados(strPokemon){
+        this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+        this.router.navigate([`detalle/${strPokemon}`]));
     }
 }
